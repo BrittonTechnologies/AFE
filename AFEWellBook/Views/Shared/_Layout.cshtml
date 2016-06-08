@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" type="text/css" href="content/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="content/styles.css">
+
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/respond.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <!--slider-main-start-->
+    <link type="text/css" href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+	 $(document).ready(function(){
+	  var slider= $('.bxslider').bxSlider({auto:true});
+	  $(".bx-controls-direction a").click(function () {
+            slider.stopAuto();
+            slider.startAuto();
+		});
+	});
+    </script>
+    <!--slider-main-start-->
+    <!-- responsive menu -->
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$('.menu').click(function(){
+			$('body').toggleClass('show-menu');
+		});
+		$('.close-button').click(function(){
+			$('body').removeClass('show-menu');
+		});
+
+	});
+    </script>
+
+
+</head>
+<body>
+   
+
+        @RenderBody()
+
+ 
+</body>
+</html>

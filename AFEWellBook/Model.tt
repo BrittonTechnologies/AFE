@@ -1,0 +1,11 @@
+<#@ template language="C#" debug="True" hostSpecific="True"                            #>
+<#@ output extension=".generated.cs"                                                   #>
+<#@ include file="C:\Users\HoboTron9001\Documents\Visual Studio 2015\Projects\AFEWellBook\packages\linq2db.PostgreSQL.1.0.7.3\content\LinqToDB.Templates\LinqToDB.PostgreSQL.Tools.ttinclude" #>
+<#@ include file="C:\Users\HoboTron9001\Documents\Visual Studio 2015\Projects\AFEWellBook\packages\linq2db.t4models.1.0.7.3\content\LinqToDB.Templates\PluralizationService.ttinclude"      #>
+<#
+	
+	NamespaceName = "DataModel";
+
+	LoadPostgreSQLMetadata("127.0.0.1", "5432", "AFEWellBook", "postgres", "hobojo12");
+	GenerateModel();
+#>

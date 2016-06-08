@@ -1,0 +1,90 @@
+﻿@media only screen and (max-width:1169px) and (min-width:768px){
+.header-center{left:0}
+.phone-no,.email-address{margin-left:5px}
+.phone-no > p{font-size:18px}
+.email-address > a{font-size:18px}
+.email-address{margin-right:5px}
+.slider-caption{top:60%}
+.slider-caption p{font-size:33px;line-height:37px}
+.left-part{width:64%;margin-left:0}
+.right-part{height:100px;width:100px;margin-left:0}
+.right1{background-position:29px 15px}
+.right2{background-position:24px -153px}
+.right3{background-position:16px -335px}
+.right4{background-position:16px -512px}
+.left-part > p{font-size:15px}
+.left-part > h4{font-size:30px}
+.benifit-left,.benifit-center,.benifit-right{padding:125px 0 50px}
+.benifit-center{background-size:cover;padding-top:100px}
+.benifit-list ul li{padding-right:43px;font-size:15px;background-position:right top;padding-bottom:23px;line-height:140%;}
+.benifit-list{margin-right:10px}
+.left-list{margin-left:10px}
+.left-list ul li{background-position:left top;font-size:14px;line-height:150%;padding-bottom:23px;}
+.right-list ul li{padding-right:0;font-size:14px;line-height:150%;padding-bottom:23px;}
+.social-media{width:31%}
+.solution{background-position:32px 80px}
+.benifit{padding:60px 0 0;}
+.social-media a{font-size:30px;height:60px;line-height:200%;width:60px;}
+.error_text {width: 719px;}
+.logo a:after {background-image: url("../images/logo-bg.png"); background-size: 100% auto !important;height: 230px;left: -25px;width: 155px;}
+.logo a {margin-left: -16px;margin-top: -22px;}
+
+}
+@media only screen and (max-width:767px) and (min-width:320px){#wrapper{background:#F7F8FB;width:auto;}
+#header{position:relative;}
+.header-left{float:none;padding-top:130px;}
+.header-center{left:0;}
+.phone-no{float:left;line-height:50px;margin-left:0;}
+.phone-no > p{font-size:19px;line-height:44px;margin-left:10px}
+.email-address > a{font-size:19px;line-height:44px}
+.header-right{float:none;margin-top:10px}
+.email-address{float:none;margin:0 20px 0 59px}
+.phone-image,.email-image{background-size:46px auto;padding:11px 2px;width:43px}
+.phone-image > img{margin-right:8px}
+.email-image > img{margin-right:8px}
+.email-image{background-size:47px auto;padding-bottom:15px;padding-top:15px;margin-right:12px}
+.inner-slider-btn{width:auto}
+.slider-caption{position:relative;background-size:cover}
+.slider-btn-area{position:relative;margin-top:20px}
+.slider-caption p{font-size:26px;line-height:32px}
+.btn-left-area,.btn-right-area{float:none;background:none}
+.btn-left-area a,.btn-right-area a{background:#354ab0;border-radius:25px}
+.btn-right-area > a{padding-right:120px;}
+.btn-left-area a span{margin-left:106px}
+.btn-right-area a span{margin-left:140px}
+.btn-right-area{float:none;margin-top:10px}
+.content > p{font-size:17px;line-height:30px}
+.title h1{font-size:25px}
+.feture-left{float:none;width:100%}
+.left-part{float:none;margin-top:20px;width:100%;margin-left:0}
+.left-part > h4,.left-part > p{text-align:center}
+.left-part > h4{font-size:30px}
+.right-part{float:none;height:140px;margin:15px auto 0;width:140px}
+.feture-cover{background-size:cover;height:auto}
+.round{float:none;margin-left:0}
+.feture-right{float:none;width:100%}
+.left-bottom,.right-bottom{margin-top:10px}
+.benifit{padding:60px 0;}
+.benifit-left{display:flex;float:none;padding:0;width:100%}
+.benifit-list{float:none;margin-right:0}
+.benifit-list ul li{background-position:left 5px;font-size:20px;line-height:150%;padding-left:42px;text-align:left;padding-right:0}
+.benifit-center{background-size:300px auto;float:none;margin-top:30px;padding:200px 0 189px;width:100%}
+.benifit-right{margin:30px 0 0;padding:0;float:none;width:100%}
+.left-list{float:none;margin-left:0}
+.solution{margin-top:20px;padding:60px 0 49px;background-image:none}
+.solution-content h3{font-size:30px;margin-bottom:15px}
+.solution-content h5{font-size:32px;margin-top:0;text-align:center}
+.solution-content h5 span{display:block;margin:0 auto;width:257px;padding:35px 0 15px 50px;background-position:7px 40px}
+.footer-top h3{line-height:30px}
+.social-media{margin:25px auto 0;max-width:210px;width:210px}
+.footer-content > p,.footer-content > a{font-size:20px;line-height:34px}
+.social-media li{margin-left:9px;}
+.social-media a{font-size:30px;height:60px;line-height:210%;text-align:center;width:60px;}
+.logo:before,.logo:after{display:none}
+.feture-content{background:none}
+.fetures{background-attachment:fixed;}
+.error_text {width: 300px;}
+.logo a {margin: 0 auto !important;width: 141px;}
+
+
+}
