@@ -51,11 +51,13 @@
             $.ajax({
                 url: '/Login/Validate',
                 data: { Username: username, Password: password },
+                datatype: "json",
                 success: function (isValid, UserID) {
-
+                    alert(isValid);
                     if(isValid)
                     {
                         window.location.href = '/Operator/Index/' + UserID
+                        alert(UserID);
                     }
 
                 },

@@ -236,8 +236,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\basic.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\components.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\styles.css" />
@@ -266,8 +268,24 @@
     <Content Include="jquery.bxslider\images\bx_loader.gif" />
     <Content Include="jquery.bxslider\jquery.bxslider.css" />
     <Content Include="jquery.bxslider\jquery.bxslider.min.js" />
+    <Content Include="js\basic.js" />
+    <Content Include="js\dashboard.js" />
+    <Content Include="js\hash.js" />
+    <Content Include="js\jgestures.min.js" />
+    <Content Include="js\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="js\jquery.min.1.7.js" />
+    <Content Include="js\jquery.mousewheel.min.js" />
     <Content Include="js\LoginForm.js" />
+    <Content Include="js\modernizr.2.5.3.min.js" />
     <Content Include="js\respond.js" />
+    <Content Include="js\scissor.js" />
+    <Content Include="js\scissor.min.js" />
+    <Content Include="js\turn.html4.js" />
+    <Content Include="js\turn.html4.min.js" />
+    <Content Include="js\turn.js" />
+    <Content Include="js\turn.min.js" />
+    <Content Include="js\zoom.js" />
+    <Content Include="js\zoom.min.js" />
     <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.generated.cs</LastGenOutput>
@@ -314,7 +332,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

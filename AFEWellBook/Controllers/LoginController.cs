@@ -24,26 +24,29 @@ namespace AFEWellBook.Controllers
 
             return View();
         }
-
+        
         public ActionResult Validate(string Username, string Password)
         {
+            bool isValid = false;
+
             using (var db = new AFEWellBookDB())
             {
                 if (db.Users.Any(p => p.UserName == Username && p.UserPassword == Password))
                 {
 
-                    var x = 9;
+                    isValid = true;
 
                 }
 
             }
 
+            int UserID = 5;
 
-                 
 
-           
 
-            return View();
+
+
+            return Json(new { isValid="isValid", UserID="UserID" }, JsonRequestBehavior.AllowGet);
         }
 
 
