@@ -9,6 +9,29 @@
     <link type="text/css" rel="stylesheet" href="~/Content/Site.css">
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+            input[type=text]:focus {
+                width: 100%;
+            }
+    </style>
+
+
 </head>
 
 <body>
@@ -55,7 +78,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href="~/Operator/OpDashboard_Vendors">
                                         <span>
                                             <i class="fa fa-lg fa-balance-scale" style="float: left;"></i> VENDORS
                                         </span>
@@ -102,7 +125,304 @@
                             <!--Main area Content-->
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="panel">
+                                    <div class="panel" style="height: 800px;">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="SearchTools" style="height:100px; background-color: lightgray;">
+                                                    <form>
+                                                        <input type="text" name="search" placeholder="Search..">
+
+
+
+                                                    </form>
+                                                  
+                                                </div>
+
+                                                <div id="WellBookTools" style="height:100px; display:none; background-color: lightgray;">
+                                                    
+                                                        <div class="btn-primary" onclick="ShowBookTiles()" >Back to Books</div>
+
+
+
+                                                    
+
+                                                </div>
+
+
+                                            </div>
+                                        </div> </br>
+
+                                        <div class="row">
+                                            <div class="col-md-12;">
+                                                <div style="height: 600px; ">
+                                                    <panel id="WellBookTiles" style="align-items:center;">
+                                                        <div class="btn WellTile" onclick="AddNewWell()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-plus" style="margin-top:30%;" > </i>
+                                                               
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">Add New Well</p>
+
+                                                        </div>
+
+                                                        <div class="btn WellTile" onclick="GetWellBook()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-tint" style="margin-top:30%;"> </i>
+
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">000012345</p>
+
+                                                        </div>
+
+                                                        <div class="btn WellTile" onclick="GetWellBook()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-tint" style="margin-top:30%;"> </i>
+
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">000012346</p>
+
+                                                        </div>
+                                                        <div class="btn WellTile" onclick="GetWellBook()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-tint" style="margin-top:30%;"> </i>
+
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">000012347</p>
+
+                                                        </div>
+                                                        <div class="btn WellTile" onclick="GetWellBook()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-tint" style="margin-top:30%;"> </i>
+
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">000012348</p>
+
+                                                        </div>
+
+                                                        <div class="btn WellTile" onclick="GetWellBook()" style="vertical-align: middle;">
+                                                            <span>
+                                                                <i class="fa fa-4x fa-tint" style="margin-top:30%;"> </i>
+
+                                                            </span>
+                                                            <p style="font-weight:500; font-size:large;">000012349</p>
+
+                                                        </div>
+
+
+                                                    </panel>
+
+                                                    <article id="WellBook" class="tabs" style="display:none;">
+
+                                                        <section id="tab1" style="background-color: #EEF279;">
+                                                            <h2><a href="#tab1" style="background-color: #EEF279;">Electrical</a></h2>
+
+                                                            <div class="bookContentArea">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="text-center"><h3 style="border-bottom: 1px solid gray;">ELECTRICAL</h3></br></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <ul>
+                                                                            <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                                <p style="border-bottom: 2px solid black;">Lights</p>
+                                                                                <div id="LightsTaskInfo" style="margin-top:10px; color: black;  text-align: left; height: 130px;">
+                                                                                    <p style="color: tomato;">STATUS: NOT COMPLETE</p>
+                                                                                    <label>
+                                                                                        VENDORS:
+                                                                                        <select style="width: 125px;">
+                                                                                            <option value="LightItUp">LightItUp</option>
+                                                                                            <option value="MrBright">MrBright</option>
+                                                                                        </select>
+                                                                                    </label>
+
+                                                                                    <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                                    <p style="display:inline-block; color: white;">NONE</p> </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                                    <p style="display:inline-block; color: white;">NONE</p>
+
+                                                                                </div>
+                                                                            </li>
+
+                                                                            <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                                <p style="border-bottom: 2px solid black;">Generators</p>
+                                                                                <div id="GeneratorsTaskInfo" style="margin-top:10px; color: black; text-align: left; height: 130px;">
+                                                                                    <p style="color: yellow;">STATUS: PENDING</p>
+                                                                                    <label>
+                                                                                        VENDORS:
+                                                                                        <select style="width: 125px;">
+                                                                                            <option value="NextGen">NextGen</option>
+                                                                                            <option value="GenForTheWin">GenForTheWin</option>
+                                                                                        </select>
+                                                                                    </label>
+
+                                                                                    <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                                    <p style="display:inline-block; color: white;">NextGen, GenForTheWin</p> </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                                    <p style="display:inline-block; color: white;">NONE</p>
+
+                                                                                </div>
+
+
+
+
+                                                                            </li>
+
+                                                                            <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                                <p style="border-bottom: 2px solid black;">Extension Cords</p>
+                                                                                <div id="ExtensionCordsTaskInfo" style="margin-top:10px; color: black; text-align: left; height: 130px;">
+                                                                                    <p style="color: lightgreen;">STATUS: COMPLETE</p>
+                                                                                    <label>
+                                                                                        VENDORS:
+                                                                                        <select style="width: 125px;">
+                                                                                            <option value="WeHaveCords">WeHaveCords</option>
+                                                                                            <option value="ExtendThis">ExtendThis</option>
+                                                                                        </select>
+                                                                                    </label>
+
+                                                                                    <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                                    <p style="display:inline-block; color: white;">WeHaveCords, ExtendThis</p>    </br>
+
+                                                                                    <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                                    <p style="display:inline-block; color: white;">ExtendThis</p>
+
+                                                                                </div>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </section>
+
+                                                        <section id="tab2" style="background-color: #bdbfff;">
+                                                            <h2><a href="#tab2" style="background-color: #bdbfff;">Construction</a></h2>
+                                                            <div class="bookContentArea">
+                                                                <div class="text-center">
+
+                                                                    <h3 style="border-bottom: 1px solid gray;">CONSTRUCTION</h3> </br>
+                                                                </div>
+                                                                <ul>
+                                                                    <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                        <p style="border-bottom: 2px solid black;">Lumber</p>
+                                                                        <div id="LumberTaskInfo" style="margin-top:10px; color: black;  text-align: left; height: 130px;">
+                                                                            <p style="color: tomato;">STATUS: NOT COMPLETE</p>
+                                                                            <label>
+                                                                                VENDORS:
+                                                                                <select style="width: 125px;">
+                                                                                    <option value="WeHaveWood">WeHaveWood</option>
+                                                                                    <option value="WoodYouLikeSome">WoodYouLikeSome</option>
+                                                                                </select>
+                                                                            </label>
+
+                                                                            <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                            <p style="display:inline-block; color: white;">NONE</p> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                            <p style="display:inline-block; color: white;">NONE</p>
+
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                        <p style="border-bottom: 2px solid black;">Tools</p>
+                                                                        <div id="ToolsTaskInfo" style="margin-top:10px; color: black; text-align: left; height: 130px;">
+                                                                            <p style="color: yellow;">STATUS: PENDING</p>
+                                                                            <label>
+                                                                                VENDORS:
+                                                                                <select style="width: 125px;">
+                                                                                    <option value="ToolTime">ToolTime</option>
+                                                                                    <option value="TurkeyOTools">TurkeyOTools</option>
+                                                                                </select>
+                                                                            </label>
+
+                                                                            <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                            <p style="display:inline-block; color: white;">ToolTime, TurkeyOTools</p> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                            <p style="display:inline-block; color: white;">NONE</p>
+
+                                                                        </div>
+
+
+
+
+                                                                    </li>
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </section>
+
+                                                        <section id="tab3" style="background-color: #C3F7C8;">
+                                                            <h2><a href="#tab3" style="background-color: #C3F7C8;">Supplies</a></h2>
+                                                            <div class="bookContentArea">
+                                                                <div class="text-center">
+
+                                                                    <h3 style="border-bottom: 1px solid gray;">SUPPLIES</h3> </br>
+                                                                </div>
+
+                                                                <ul>
+                                                                    <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                                        <p style="border-bottom: 2px solid black;">PortiPodies</p>
+                                                                        <div id="PortiPodyTaskInfo" style="margin-top:10px; color: black;  text-align: left; height: 130px;">
+                                                                            <p style="color: lightgreen;">STATUS: COMPLETE</p>
+                                                                            <label>
+                                                                                VENDORS:
+                                                                                <select style="width: 125px;">
+                                                                                    <option value="PooToYou">PooToYou</option>
+                                                                                    <option value="YouPoop">YouPoop</option>
+                                                                                </select>
+                                                                            </label>
+
+                                                                            <input class="btn-default" style="width:75px; border-radius:3px;" type="submit" value="POST JOB"> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block; ">SENT TO: </p>
+                                                                            <p style="display:inline-block; color: white;">PooToYou, YouPoop</p> </br>
+
+                                                                            <p style="font-weight: 700; display:inline-block">ACCEPTED BY: </p>
+                                                                            <p style="display:inline-block; color: white;">YouPoop</p>
+
+                                                                        </div>
+                                                                    </li>
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </section>
+
+                                                    </article>
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
 
 
 
@@ -125,4 +445,43 @@
 
 
     </section>
+
+    <script>
+
+        function AddNewWell() {
+            alert('ADD NEW WELL');
+        }
+
+
+        function GetWellBook() {
+
+            $('#WellBookTiles').hide();
+            $('#SearchTools').hide();
+
+            $('#WellBook').show();
+            $('#WellBookTools').show();
+
+
+
+        }
+
+        function ShowBookTiles() {
+
+            $('#WellBookTiles').show();
+            $('#SearchTools').show();
+
+            $('#WellBook').hide();
+            $('#WellBookTools').hide();
+
+
+
+        }
+
+ 
+
+
+    </script>
+
+
+
 </body>

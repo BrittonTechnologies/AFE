@@ -1,0 +1,236 @@
+﻿
+@{
+    ViewBag.Title = "OpDashboard_Vendors";
+}
+
+<h2>OpDashboard_Vendors</h2>
+
+<head>
+
+    <link type="text/css" rel="stylesheet" href="~/Content/Site.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="#OpDashboard_Vendors">
+        <div class="container">
+
+            <div class="row" style="height: 100%;">
+                <!--SIDEBAR-->
+                <div class="col-md-3">
+
+                    <!--Header for SideBar-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h3>SideBAR</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--END Header for SideBar-->
+                    <!--NavItems-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="nav" style="background-color: #797979; height: 800px;">
+                                <li>
+                                    <a href="~/Operator/Index">
+                                        <span>
+                                            <i class="fa fa-lg fa-bank" style="float: left; vertical-align: middle;"></i> DASHBOARD
+                                        </span>
+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="fa fa-lg fa-area-chart" style="float: left;"></i> ANALYTICS
+                                        </span>
+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="~/Operator/OpDashboard_Vendors">
+                                        <span>
+                                            <i class="fa fa-lg fa-balance-scale" style="float: left;"></i> VENDORS
+                                        </span>
+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="fa fa-lg fa-question-circle-o" style="float: left;"></i> ITEM 4
+                                        </span>
+
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                    <!--END NavItems-->
+
+
+                </div>
+                <!--End SIDEBAR-->
+                <div class="col-md-9;">
+                    <!--Main area Content-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel" style="height: 800px;">
+                                <article class="tabs">
+
+                                    <section id="tab1" style="background-color: #EEF279;">
+                                        <h2><a href="#tab1" style="background-color: #EEF279;">Electrical</a></h2>
+
+                                        <div class="bookContentArea">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="text-center"><h3 style="border-bottom: 1px solid gray;">ELECTRICAL</h3></br></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul>
+                                                        <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                            <p style="border-bottom: 2px solid black;">Lights</p>
+                                                            <div id="LightsVendorInfo" style="margin-top:10px; color: black; text-align: left; height: 220px;">
+
+                                                                <h3>LightItUp</h3>
+                                                                <ul style="list-style-type:circle">
+                                                                    <li style="font-weight: 600;">Phone: 512-111-1111</li>
+                                                                    <li style="font-weight: 600;">Email: someone@LightItUp.com</li>
+                                                                    <li style="font-weight: 600;">Addr : 1234 Somewhere Ln Austin, TX 78631</li>
+
+                                                                </ul>
+
+                                                                <h3>MrBright</h3>
+                                                                <ul style="list-style-type:circle">
+                                                                    <li style="font-weight: 600;">Phone: 512-222-2222</li>
+                                                                    <li style="font-weight: 600;">Email: someone@mrbright.com</li>
+                                                                    <li style="font-weight: 600;">Addr : 1234 SomewhereElse Ln Austin, TX 78731</li>
+
+                                                                </ul>
+
+
+
+                                                            </div>
+                                                        </li>
+
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </section>
+
+                                    <section id="tab2" style="background-color: #bdbfff;">
+                                        <h2><a href="#tab2" style="background-color: #bdbfff;">Construction</a></h2>
+                                        <div class="bookContentArea">
+                                            <div class="text-center">
+
+                                                <h3 style="border-bottom: 1px solid gray;">CONSTRUCTION</h3> </br>
+                                            </div>
+                                            <ul>
+                                                <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                    <p style="border-bottom: 2px solid black;">Lumber</p>
+                                                    <div id="LumberVendorInfo" style="margin-top:10px; color: black; text-align: left; height: 220px;">
+
+                                                        <h3>WeHaveWood</h3>
+                                                        <ul style="list-style-type:circle">
+                                                            <li style="font-weight: 600;">Phone: 512-333-3333</li>
+                                                            <li style="font-weight: 600;">Email: someone@weHaveWood.com</li>
+                                                            <li style="font-weight: 600;">Addr : 1234 OverHere Ln Austin, TX 12345</li>
+
+                                                        </ul>
+
+                                                        <h3>WoodYouLikeSome</h3>
+                                                        <ul style="list-style-type:circle">
+                                                            <li style="font-weight: 600;">Phone: 512-444-4444</li>
+                                                            <li style="font-weight: 600;">Email: someone@WoodYouLikeSome.com</li>
+                                                            <li style="font-weight: 600;">Addr : 1234 Overthere Ln Austin, TX 54321</li>
+
+                                                        </ul>
+
+
+
+                                                    </div>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+                                    </section>
+
+                                    <section id="tab3" style="background-color: #C3F7C8;">
+                                        <h2><a href="#tab3" style="background-color: #C3F7C8;">Supplies</a></h2>
+                                        <div class="bookContentArea">
+                                            <div class="text-center">
+
+                                                <h3 style="border-bottom: 1px solid gray;">SUPPLIES</h3> </br>
+                                            </div>
+
+                                            <ul>
+                                                <li class="btn-primary" style="border: 1px solid black; text-align:center; border-radius: 5px; margin-top: 10px;">
+                                                    <p style="border-bottom: 2px solid black;">PortiPodies</p>
+                                                    <div id="PortiPodyVendorInfo" style="margin-top:10px; color: black; text-align: left; height: 220px;">
+
+                                                        <h3>PooToYou</h3>
+                                                        <ul style="list-style-type:circle">
+                                                            <li style="font-weight: 600;">Phone: 512-555-5555</li>
+                                                            <li style="font-weight: 600;">Email: someone@PooToYou.com</li>
+                                                            <li style="font-weight: 600;">Addr : 1234 IDontKnow Ln Austin, TX 96325</li>
+
+                                                        </ul>
+
+                                                        <h3>WoodYouLikeSome</h3>
+                                                        <ul style="list-style-type:circle">
+                                                            <li style="font-weight: 600;">Phone: 512-YOU-POOP</li>
+                                                            <li style="font-weight: 600;">Email: someone@YouPoop.com</li>
+                                                            <li style="font-weight: 600;">Addr : 1234 Poop Ln Austin, TX 54187</li>
+
+                                                        </ul>
+
+
+
+                                                    </div>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+                                    </section>
+
+                                </article>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--END Main area Content-->
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </section>
+</body>

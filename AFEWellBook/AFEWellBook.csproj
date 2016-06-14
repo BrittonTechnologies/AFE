@@ -370,6 +370,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Operator\Index.cshtml" />
+    <Content Include="Views\Operator\OpDashboard_Vendors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
