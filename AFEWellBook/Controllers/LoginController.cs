@@ -29,6 +29,8 @@ namespace AFEWellBook.Controllers
         {
             bool isValid = false;
 
+            int UserID = 0;
+
             using (var db = new AFEWellBookDB())
             {
                 if (db.Users.Any(p => p.UserName == Username && p.UserPassword == Password))
@@ -36,11 +38,16 @@ namespace AFEWellBook.Controllers
 
                     isValid = true;
 
+                    UserID = db.Users.Where(x => x.UserName == Username).Select(x => x.UserID).FirstOrDefault();
+
                 }
 
             }
 
-            int UserID = 5;
+
+
+           
+            
 
 
 

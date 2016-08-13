@@ -24,8 +24,5 @@ namespace AFEWellBook.Models
 
 	}
 	
-	public class MovieDBContext : DbContext 
-	{
-		 public DbSet<JobModel> Job { get; set; } 
-	}
+
 }

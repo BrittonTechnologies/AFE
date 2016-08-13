@@ -20,17 +20,18 @@ namespace DataModel
 	/// </summary>
 	public partial class AFEWellBookDB : LinqToDB.Data.DataConnection
 	{
-		public ITable<Device>       Devices       { get { return this.GetTable<Device>(); } }
-		public ITable<Document>     Documents     { get { return this.GetTable<Document>(); } }
-		public ITable<DocumentType> DocumentTypes { get { return this.GetTable<DocumentType>(); } }
-		public ITable<Job>          Jobs          { get { return this.GetTable<Job>(); } }
-		public ITable<JobStatus>    JobStatus     { get { return this.GetTable<JobStatus>(); } }
-		public ITable<Operator>     Operators     { get { return this.GetTable<Operator>(); } }
-		public ITable<User>         Users         { get { return this.GetTable<User>(); } }
-		public ITable<UserType>     UserTypes     { get { return this.GetTable<UserType>(); } }
-		public ITable<Vendor>       Vendors       { get { return this.GetTable<Vendor>(); } }
-		public ITable<VendorBid>    VendorBids    { get { return this.GetTable<VendorBid>(); } }
-		public ITable<VendorType>   VendorTypes   { get { return this.GetTable<VendorType>(); } }
+		public ITable<Category>       Categories      { get { return this.GetTable<Category>(); } }
+		public ITable<Device>         Devices         { get { return this.GetTable<Device>(); } }
+		public ITable<Document>       Documents       { get { return this.GetTable<Document>(); } }
+		public ITable<DocumentType>   DocumentTypes   { get { return this.GetTable<DocumentType>(); } }
+		public ITable<Operator>       Operators       { get { return this.GetTable<Operator>(); } }
+		public ITable<Quote>          Quotes          { get { return this.GetTable<Quote>(); } }
+		public ITable<ServiceRequest> ServiceRequests { get { return this.GetTable<ServiceRequest>(); } }
+		public ITable<Status>         Status          { get { return this.GetTable<Status>(); } }
+		public ITable<SubCategory>    SubCategories   { get { return this.GetTable<SubCategory>(); } }
+		public ITable<User>           Users           { get { return this.GetTable<User>(); } }
+		public ITable<UserType>       UserTypes       { get { return this.GetTable<UserType>(); } }
+		public ITable<Vendor>         Vendors         { get { return this.GetTable<Vendor>(); } }
 
 		public AFEWellBookDB()
 		{
@@ -44,6 +45,13 @@ namespace DataModel
 		}
 
 		partial void InitDataContext();
+	}
+
+	[Table(Schema="public", Name="Category")]
+	public partial class Category
+	{
+		[PrimaryKey, NotNull    ] public int    CategoryID { get; set; } // integer
+		[Column,        Nullable] public string NameX      { get; set; } // text
 	}
 
 	[Table(Schema="public", Name="Device")]
@@ -90,7 +98,7 @@ namespace DataModel
 		/// Table_VendorBid_Table_Document_FK_BackReference
 		/// </summary>
 		[Association(ThisKey="DocumentID", OtherKey="DocumentID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<VendorBid> TableVendorBidTableFKs { get; set; }
+		public IEnumerable<Quote> TableVendorBidTableFKs { get; set; }
 
 		#endregion
 	}
@@ -112,64 +120,6 @@ namespace DataModel
 		#endregion
 	}
 
-	[Table(Schema="public", Name="Job")]
-	public partial class Job
-	{
-		[PrimaryKey, NotNull    ] public int       JobID        { get; set; } // integer
-		[Column,        Nullable] public string    NameX        { get; set; } // text
-		[Column,        Nullable] public int?      JobStatusID  { get; set; } // integer
-		[Column,        Nullable] public int?      OperatorID   { get; set; } // integer
-		[Column,        Nullable] public int?      VendorID     { get; set; } // integer
-		[Column,        Nullable] public DateTime? DatePosted   { get; set; } // date
-		[Column,        Nullable] public DateTime? DateAccepted { get; set; } // date
-		[Column,        Nullable] public object    VendorIDList { get; set; } // ARRAY
-
-		#region Associations
-
-		/// <summary>
-		/// Table_Job_Table_JobStatus_FK
-		/// </summary>
-		[Association(ThisKey="JobStatusID", OtherKey="JobStatusID", CanBeNull=true, KeyName="Table_Job_Table_JobStatus_FK", BackReferenceName="TableJobTableFKs")]
-		public JobStatus TableTableJobStatusFK { get; set; }
-
-		/// <summary>
-		/// Table_Job_Table_Operator_FK
-		/// </summary>
-		[Association(ThisKey="OperatorID", OtherKey="OperatorID", CanBeNull=true, KeyName="Table_Job_Table_Operator_FK", BackReferenceName="TableJobTableFKs")]
-		public Operator TableTableOperatorFK { get; set; }
-
-		/// <summary>
-		/// Table_Job_Table_Vendor_FK
-		/// </summary>
-		[Association(ThisKey="VendorID", OtherKey="VendorID", CanBeNull=true, KeyName="Table_Job_Table_Vendor_FK", BackReferenceName="TableJobTableFKs")]
-		public Vendor TableTableVendorFK { get; set; }
-
-		/// <summary>
-		/// Table_VendorBid_Table_Job_FK_BackReference
-		/// </summary>
-		[Association(ThisKey="JobID", OtherKey="JobID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<VendorBid> TableVendorBidTableFKs { get; set; }
-
-		#endregion
-	}
-
-	[Table(Schema="public", Name="JobStatus")]
-	public partial class JobStatus
-	{
-		[PrimaryKey, NotNull    ] public int    JobStatusID { get; set; } // integer
-		[Column,        Nullable] public string NameX       { get; set; } // text
-
-		#region Associations
-
-		/// <summary>
-		/// Table_Job_Table_JobStatus_FK_BackReference
-		/// </summary>
-		[Association(ThisKey="JobStatusID", OtherKey="JobStatusID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<Job> TableJobTableFKs { get; set; }
-
-		#endregion
-	}
-
 	[Table(Schema="public", Name="Operator")]
 	public partial class Operator
 	{
@@ -180,6 +130,7 @@ namespace DataModel
 		[Column,        Nullable] public int?   EmailID      { get; set; } // integer
 		[Column,        Nullable] public bool?  IsAdmin      { get; set; } // boolean
 		[Column,        Nullable] public bool?  IsCompanyMan { get; set; } // boolean
+		[Column,        Nullable] public int?   UserID       { get; set; } // integer
 
 		#region Associations
 
@@ -187,16 +138,115 @@ namespace DataModel
 		/// Table_Job_Table_Operator_FK_BackReference
 		/// </summary>
 		[Association(ThisKey="OperatorID", OtherKey="OperatorID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<Job> TableJobTableFKs { get; set; }
+		public IEnumerable<ServiceRequest> TableJobTableFKs { get; set; }
 
 		#endregion
+	}
+
+	[Table(Schema="public", Name="Quote")]
+	public partial class Quote
+	{
+		[PrimaryKey, NotNull    ] public int       QuoteID          { get; set; } // integer
+		[Column,        Nullable] public int?      ServiceRequestID { get; set; } // integer
+		[Column,        Nullable] public int?      VendorID         { get; set; } // integer
+		[Column,        Nullable] public double?   QuoteAmount      { get; set; } // double precision
+		[Column,        Nullable] public DateTime? DateSubmitted    { get; set; } // date
+		[Column,        Nullable] public int?      DocumentID       { get; set; } // integer
+		[Column,        Nullable] public int?      StatusID         { get; set; } // integer
+
+		#region Associations
+
+		/// <summary>
+		/// Table_VendorBid_Table_Vendor_FK
+		/// </summary>
+		[Association(ThisKey="VendorID", OtherKey="VendorID", CanBeNull=true, KeyName="Table_VendorBid_Table_Vendor_FK", BackReferenceName="TableVendorBidTableFKs")]
+		public Vendor TableVendorBidTableVendorFK { get; set; }
+
+		/// <summary>
+		/// Table_VendorBid_Table_Job_FK
+		/// </summary>
+		[Association(ThisKey="ServiceRequestID", OtherKey="ServiceRequestID", CanBeNull=true, KeyName="Table_VendorBid_Table_Job_FK", BackReferenceName="TableVendorBidTableJobFKs")]
+		public ServiceRequest TableVendorBidTableJobFK { get; set; }
+
+		/// <summary>
+		/// Table_VendorBid_Table_Document_FK
+		/// </summary>
+		[Association(ThisKey="DocumentID", OtherKey="DocumentID", CanBeNull=true, KeyName="Table_VendorBid_Table_Document_FK", BackReferenceName="TableVendorBidTableFKs")]
+		public Document TableVendorBidTableDocumentFK { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="public", Name="ServiceRequest")]
+	public partial class ServiceRequest
+	{
+		[PrimaryKey, NotNull    ] public int       ServiceRequestID { get; set; } // integer
+		[Column,        Nullable] public int?      StatusID         { get; set; } // integer
+		[Column,        Nullable] public int?      OperatorID       { get; set; } // integer
+		[Column,        Nullable] public int?      AcceptedVendorID { get; set; } // integer
+		[Column,        Nullable] public DateTime? DatePosted       { get; set; } // date
+		[Column,        Nullable] public DateTime? DateAccepted     { get; set; } // date
+		[Column,        Nullable] public object    VendorIDList     { get; set; } // ARRAY
+		[Column,        Nullable] public DateTime? DateDue          { get; set; } // date
+		[Column,        Nullable] public string    Details          { get; set; } // text
+
+		#region Associations
+
+		/// <summary>
+		/// Table_Job_Table_Vendor_FK
+		/// </summary>
+		[Association(ThisKey="AcceptedVendorID", OtherKey="VendorID", CanBeNull=true, KeyName="Table_Job_Table_Vendor_FK", BackReferenceName="TableJobTableFKs")]
+		public Vendor TableJobTableVendorFK { get; set; }
+
+		/// <summary>
+		/// Table_Job_Table_JobStatus_FK
+		/// </summary>
+		[Association(ThisKey="StatusID", OtherKey="StatusID", CanBeNull=true, KeyName="Table_Job_Table_JobStatus_FK", BackReferenceName="TableJobTableJobStatusFKs")]
+		public Status TableJobTableJobStatusFK { get; set; }
+
+		/// <summary>
+		/// Table_Job_Table_Operator_FK
+		/// </summary>
+		[Association(ThisKey="OperatorID", OtherKey="OperatorID", CanBeNull=true, KeyName="Table_Job_Table_Operator_FK", BackReferenceName="TableJobTableFKs")]
+		public Operator TableJobTableOperatorFK { get; set; }
+
+		/// <summary>
+		/// Table_VendorBid_Table_Job_FK_BackReference
+		/// </summary>
+		[Association(ThisKey="ServiceRequestID", OtherKey="ServiceRequestID", CanBeNull=true, IsBackReference=true)]
+		public IEnumerable<Quote> TableVendorBidTableJobFKs { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="public", Name="Status")]
+	public partial class Status
+	{
+		[PrimaryKey, NotNull    ] public int    StatusID { get; set; } // integer
+		[Column,        Nullable] public string NameX    { get; set; } // text
+
+		#region Associations
+
+		/// <summary>
+		/// Table_Job_Table_JobStatus_FK_BackReference
+		/// </summary>
+		[Association(ThisKey="StatusID", OtherKey="StatusID", CanBeNull=true, IsBackReference=true)]
+		public IEnumerable<ServiceRequest> TableJobTableJobStatusFKs { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="public", Name="SubCategory")]
+	public partial class SubCategory
+	{
+		[PrimaryKey, NotNull    ] public int    SubCategoryID { get; set; } // integer
+		[Column,        Nullable] public string NameX         { get; set; } // text
 	}
 
 	[Table(Schema="public", Name="User")]
 	public partial class User
 	{
 		[PrimaryKey, NotNull    ] public int    UserID       { get; set; } // integer
-		[Column,        Nullable] public string NameX        { get; set; } // text
 		[Column,        Nullable] public int?   UserTypeID   { get; set; } // integer
 		[Column,        Nullable] public string UserName     { get; set; } // text
 		[Column,        Nullable] public string UserPassword { get; set; } // text
@@ -233,89 +283,39 @@ namespace DataModel
 	[Table(Schema="public", Name="Vendor")]
 	public partial class Vendor
 	{
-		[PrimaryKey, NotNull    ] public int    VendorID     { get; set; } // integer
-		[Column,        Nullable] public string NameX        { get; set; } // text
-		[Column,        Nullable] public int?   VendorTypeID { get; set; } // integer
-		[Column,        Nullable] public int?   PhoneID      { get; set; } // integer
-		[Column,        Nullable] public int?   AddressID    { get; set; } // integer
-		[Column,        Nullable] public int?   EmailID      { get; set; } // integer
+		[PrimaryKey, NotNull    ] public int    VendorID       { get; set; } // integer
+		[Column,        Nullable] public string NameX          { get; set; } // text
+		[Column,        Nullable] public int?   PhoneID        { get; set; } // integer
+		[Column,        Nullable] public int?   AddressID      { get; set; } // integer
+		[Column,        Nullable] public int?   EmailID        { get; set; } // integer
+		[Column,        Nullable] public int?   UserID         { get; set; } // integer
+		[Column,        Nullable] public object SubCategoryIDs { get; set; } // ARRAY
 
 		#region Associations
 
 		/// <summary>
-		/// Table_Vendor_Table_VendorType_FK
-		/// </summary>
-		[Association(ThisKey="VendorTypeID", OtherKey="VendorTypeID", CanBeNull=true, KeyName="Table_Vendor_Table_VendorType_FK", BackReferenceName="TableVendorTableFKs")]
-		public VendorType TableTableVendorTypeFK { get; set; }
-
-		/// <summary>
 		/// Table_Job_Table_Vendor_FK_BackReference
 		/// </summary>
-		[Association(ThisKey="VendorID", OtherKey="VendorID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<Job> TableJobTableFKs { get; set; }
+		[Association(ThisKey="VendorID", OtherKey="AcceptedVendorID", CanBeNull=true, IsBackReference=true)]
+		public IEnumerable<ServiceRequest> TableJobTableFKs { get; set; }
 
 		/// <summary>
 		/// Table_VendorBid_Table_Vendor_FK_BackReference
 		/// </summary>
 		[Association(ThisKey="VendorID", OtherKey="VendorID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<VendorBid> TableVendorBidTableFKs { get; set; }
-
-		#endregion
-	}
-
-	[Table(Schema="public", Name="VendorBid")]
-	public partial class VendorBid
-	{
-		[PrimaryKey, NotNull    ] public int       VendorBidID { get; set; } // integer
-		[Column,        Nullable] public int?      JobID       { get; set; } // integer
-		[Column,        Nullable] public int?      VendorID    { get; set; } // integer
-		[Column,        Nullable] public double?   BidAmount   { get; set; } // double precision
-		[Column,        Nullable] public DateTime? DatePosted  { get; set; } // date
-		[Column,        Nullable] public bool?     IsActive    { get; set; } // boolean
-		[Column,        Nullable] public int?      DocumentID  { get; set; } // integer
-
-		#region Associations
-
-		/// <summary>
-		/// Table_VendorBid_Table_Job_FK
-		/// </summary>
-		[Association(ThisKey="JobID", OtherKey="JobID", CanBeNull=true, KeyName="Table_VendorBid_Table_Job_FK", BackReferenceName="TableVendorBidTableFKs")]
-		public Job TableTableJobFK { get; set; }
-
-		/// <summary>
-		/// Table_VendorBid_Table_Vendor_FK
-		/// </summary>
-		[Association(ThisKey="VendorID", OtherKey="VendorID", CanBeNull=true, KeyName="Table_VendorBid_Table_Vendor_FK", BackReferenceName="TableVendorBidTableFKs")]
-		public Vendor TableTableVendorFK { get; set; }
-
-		/// <summary>
-		/// Table_VendorBid_Table_Document_FK
-		/// </summary>
-		[Association(ThisKey="DocumentID", OtherKey="DocumentID", CanBeNull=true, KeyName="Table_VendorBid_Table_Document_FK", BackReferenceName="TableVendorBidTableFKs")]
-		public Document TableTableDocumentFK { get; set; }
-
-		#endregion
-	}
-
-	[Table(Schema="public", Name="VendorType")]
-	public partial class VendorType
-	{
-		[PrimaryKey, NotNull    ] public int    VendorTypeID { get; set; } // integer
-		[Column,        Nullable] public string NameX        { get; set; } // text
-
-		#region Associations
-
-		/// <summary>
-		/// Table_Vendor_Table_VendorType_FK_BackReference
-		/// </summary>
-		[Association(ThisKey="VendorTypeID", OtherKey="VendorTypeID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<Vendor> TableVendorTableFKs { get; set; }
+		public IEnumerable<Quote> TableVendorBidTableFKs { get; set; }
 
 		#endregion
 	}
 
 	public static partial class TableExtensions
 	{
+		public static Category Find(this ITable<Category> table, int CategoryID)
+		{
+			return table.FirstOrDefault(t =>
+				t.CategoryID == CategoryID);
+		}
+
 		public static Device Find(this ITable<Device> table, int DeviceID)
 		{
 			return table.FirstOrDefault(t =>
@@ -334,22 +334,34 @@ namespace DataModel
 				t.DocumentTypeID == DocumentTypeID);
 		}
 
-		public static Job Find(this ITable<Job> table, int JobID)
-		{
-			return table.FirstOrDefault(t =>
-				t.JobID == JobID);
-		}
-
-		public static JobStatus Find(this ITable<JobStatus> table, int JobStatusID)
-		{
-			return table.FirstOrDefault(t =>
-				t.JobStatusID == JobStatusID);
-		}
-
 		public static Operator Find(this ITable<Operator> table, int OperatorID)
 		{
 			return table.FirstOrDefault(t =>
 				t.OperatorID == OperatorID);
+		}
+
+		public static Quote Find(this ITable<Quote> table, int QuoteID)
+		{
+			return table.FirstOrDefault(t =>
+				t.QuoteID == QuoteID);
+		}
+
+		public static ServiceRequest Find(this ITable<ServiceRequest> table, int ServiceRequestID)
+		{
+			return table.FirstOrDefault(t =>
+				t.ServiceRequestID == ServiceRequestID);
+		}
+
+		public static Status Find(this ITable<Status> table, int StatusID)
+		{
+			return table.FirstOrDefault(t =>
+				t.StatusID == StatusID);
+		}
+
+		public static SubCategory Find(this ITable<SubCategory> table, int SubCategoryID)
+		{
+			return table.FirstOrDefault(t =>
+				t.SubCategoryID == SubCategoryID);
 		}
 
 		public static User Find(this ITable<User> table, int UserID)
@@ -368,18 +380,6 @@ namespace DataModel
 		{
 			return table.FirstOrDefault(t =>
 				t.VendorID == VendorID);
-		}
-
-		public static VendorBid Find(this ITable<VendorBid> table, int VendorBidID)
-		{
-			return table.FirstOrDefault(t =>
-				t.VendorBidID == VendorBidID);
-		}
-
-		public static VendorType Find(this ITable<VendorType> table, int VendorTypeID)
-		{
-			return table.FirstOrDefault(t =>
-				t.VendorTypeID == VendorTypeID);
 		}
 	}
 }

@@ -214,6 +214,99 @@
 
                                                     <article id="WellBook" class="tabs" style="display:none;">
 
+                                                        <section id="tab0" style="background-color: #ddeeff;">
+                                                            <h2><a href="#tab0" style="background-color: #ddeeff;">Home</a></h2>
+
+                                                            <div id="HomePageContentArea">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+
+                                                                        <div class="text-center"><h3 style="border-bottom: 1px solid gray;">Home</h3></br></div>
+                                                                  
+                                                                    
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+
+                                                                        <div class="btn WellTile" onclick="NewServiceRequest()" style="vertical-align: middle;">
+
+
+                                                                            <span>
+                                                                                <i class="fa fa-4x fa-plus" style="margin-top:30%;"> </i>
+
+                                                                            </span>
+                                                                            <p style="font-weight:500; font-size:large; text-wrap: normal;">New Service Request</p>
+
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                        
+
+                                                            </div>
+
+                                                            <div id="NewServiceRequest" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+
+                                                                        <h3 style="border-bottom: 1px solid gray;">New Service Request</h3> </br>
+
+                                                                        <input id="Details" type="text" placeholder="Service Request Details" />
+                                                                        
+
+
+                                                                        <label>
+                                                                            Service Type:
+                                                                            <select id="VendorType">
+                                                                                <option value="Electrical">Electrical</option>
+                                                                                <option value="Construction">Construction</option>
+                                                                                <option value="Supplies">Supplies</option>
+
+
+                                                                            </select>
+                                                                        </label>
+                                                                       
+
+                                                                        <label>
+                                                                            Vendors: 
+                                                                            <select id="VendorList" class="selectpicker" multiple onchange="selectIngredient(this);">
+                                                                                <option value="Cheese">Cheese</option>
+                                                                                <option value="Olives">Olives</option>
+                                                                                <option value="Pepperoni">Pepperoni</option>
+
+                                                                            </select>
+                                                                        </label>
+                                                                       
+                                                        <!--                <label>
+                                                                            Date Type
+                                                                            <select>
+                                                                                <option value="Electrical">Due Date</option>
+                                                                                <option value="Construction">Due Within</option>
+                                                                  
+                                                                            </select>
+                                                                        </label>
+                                                            -->
+
+                                                                        <div class="datepicker">
+                                                                            <label>Due Date:  </label><input id="DateDue" type="date" />
+
+                                                                        </div>
+
+                                                                        <input class="btn-default" type="submit" onclick="SubmitJob()" />
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </section>
+
                                                         <section id="tab1" style="background-color: #EEF279;">
                                                             <h2><a href="#tab1" style="background-color: #EEF279;">Electrical</a></h2>
 
@@ -448,6 +541,37 @@
 
     <script>
 
+
+        function SubmitJob() {
+     
+            var DateDue = $('#DateDue').val();
+
+            console.log(DateDue);
+
+            var VendorType = $('#VendorType').val();
+            var Details = $('#Details').val();
+      
+
+            $.ajax({
+                url: '/Operator/WriteJob',
+                data: { DateDue: DateDue, VendorType: VendorType, Details: Details },
+                datatype: "json",
+                success: function (x) {
+                   
+
+                },
+                error: function () {
+                    alert('Failed to Login');
+
+
+
+                }
+            }); //End Ajax
+        }
+
+
+
+
         function AddNewWell() {
             alert('ADD NEW WELL');
         }
@@ -476,6 +600,43 @@
 
 
         }
+
+        function NewServiceRequest() {
+
+            $('#HomePageContentArea').hide();
+
+            $('#NewServiceRequest').show();
+
+
+
+        }
+
+        
+        function selectIngredient(select) {
+            var option = select.options[select.selectedIndex];
+            var ul = select.parentNode.getElementsByTagName('ul')[0];
+
+            var choices = ul.getElementsByTagName('input');
+            for (var i = 0; i < choices.length; i++)
+                if (choices[i].value == option.value)
+                    return;
+
+            var li = document.createElement('li');
+            var input = document.createElement('input');
+            var text = document.createTextNode(option.firstChild.data);
+
+            input.type = 'hidden';
+            input.name = 'ingredients[]';
+            input.value = option.value;
+
+            li.appendChild(input);
+            li.appendChild(text);
+            li.setAttribute('onclick', 'this.parentNode.removeChild(this);');
+
+            ul.appendChild(li);
+        }
+
+
 
  
 
