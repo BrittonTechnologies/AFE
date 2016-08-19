@@ -299,7 +299,7 @@
 
                                                                         </div>
 
-                                                                        <input class="btn-default" type="submit" onclick="SubmitJob()" />
+                                                                        <input class="btn-default" type="submit" onclick="SubmitServiceRequest()" />
 
                                                                     </div>
                                                                 </div>
@@ -542,7 +542,7 @@
     <script>
 
 
-        function SubmitJob() {
+        function SubmitServiceRequest() {
      
             var DateDue = $('#DateDue').val();
 
@@ -553,7 +553,7 @@
       
 
             $.ajax({
-                url: '/Operator/WriteJob',
+                url: '/Operator/SubmitServiceRequest',
                 data: { DateDue: DateDue, VendorType: VendorType, Details: Details },
                 datatype: "json",
                 success: function (x) {

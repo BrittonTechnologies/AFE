@@ -163,12 +163,6 @@ namespace DataModel
 		public Vendor TableVendorBidTableVendorFK { get; set; }
 
 		/// <summary>
-		/// Table_VendorBid_Table_Job_FK
-		/// </summary>
-		[Association(ThisKey="ServiceRequestID", OtherKey="ServiceRequestID", CanBeNull=true, KeyName="Table_VendorBid_Table_Job_FK", BackReferenceName="TableVendorBidTableJobFKs")]
-		public ServiceRequest TableVendorBidTableJobFK { get; set; }
-
-		/// <summary>
 		/// Table_VendorBid_Table_Document_FK
 		/// </summary>
 		[Association(ThisKey="DocumentID", OtherKey="DocumentID", CanBeNull=true, KeyName="Table_VendorBid_Table_Document_FK", BackReferenceName="TableVendorBidTableFKs")]
@@ -180,15 +174,15 @@ namespace DataModel
 	[Table(Schema="public", Name="ServiceRequest")]
 	public partial class ServiceRequest
 	{
-		[PrimaryKey, NotNull    ] public int       ServiceRequestID { get; set; } // integer
-		[Column,        Nullable] public int?      StatusID         { get; set; } // integer
-		[Column,        Nullable] public int?      OperatorID       { get; set; } // integer
-		[Column,        Nullable] public int?      AcceptedVendorID { get; set; } // integer
-		[Column,        Nullable] public DateTime? DatePosted       { get; set; } // date
-		[Column,        Nullable] public DateTime? DateAccepted     { get; set; } // date
-		[Column,        Nullable] public object    VendorIDList     { get; set; } // ARRAY
-		[Column,        Nullable] public DateTime? DateDue          { get; set; } // date
-		[Column,        Nullable] public string    Details          { get; set; } // text
+		[Column,     Nullable] public int?      StatusID         { get; set; } // integer
+		[Column,     Nullable] public int?      OperatorID       { get; set; } // integer
+		[Column,     Nullable] public int?      AcceptedVendorID { get; set; } // integer
+		[Column,     Nullable] public DateTime? DatePosted       { get; set; } // date
+		[Column,     Nullable] public DateTime? DateAccepted     { get; set; } // date
+		[Column,     Nullable] public object    VendorIDList     { get; set; } // ARRAY
+		[Column,     Nullable] public DateTime? DateDue          { get; set; } // date
+		[Column,     Nullable] public string    Details          { get; set; } // text
+		[PrimaryKey, Identity] public int       ServiceRequestID { get; set; } // integer
 
 		#region Associations
 
@@ -209,12 +203,6 @@ namespace DataModel
 		/// </summary>
 		[Association(ThisKey="OperatorID", OtherKey="OperatorID", CanBeNull=true, KeyName="Table_Job_Table_Operator_FK", BackReferenceName="TableJobTableFKs")]
 		public Operator TableJobTableOperatorFK { get; set; }
-
-		/// <summary>
-		/// Table_VendorBid_Table_Job_FK_BackReference
-		/// </summary>
-		[Association(ThisKey="ServiceRequestID", OtherKey="ServiceRequestID", CanBeNull=true, IsBackReference=true)]
-		public IEnumerable<Quote> TableVendorBidTableJobFKs { get; set; }
 
 		#endregion
 	}

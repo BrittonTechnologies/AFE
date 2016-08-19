@@ -19,58 +19,45 @@ namespace AFEWellBook.Controllers
             //get stuff to fill current job table
 
 
-           
+           //Load Categories
+           //Load SubCategories
+
            
 
             return View();
         }
         
         
-        public ActionResult GetJobs()
-		{
-     		List<JobModel> jobList = new List<JobModel>();
-
-           
+   
 
 
-
-            /*return (from r in results 
-			 select new jobList  {
-			     
-			     go to DB and fill the job model
-
-			 }).ToList()
-			  	*/
-
-
-            return Json(jobList, JsonRequestBehavior.AllowGet);
-        }
-
-
-        public ActionResult WriteJob(string DateDue, string VendorType, string Details)
+        public ActionResult SubmitServiceRequest(string DateDue, string VendorType, string Details)
         {
 
-            Job x = new Job();
+            ServiceRequest x = new ServiceRequest();
 
-           
-            
+            List<int> y = new List<int>();
+
+            y.Add(1);
+            y.Add(2);
+
 
             using (var db = new AFEWellBookDB())
             {
-                x.JobStatusID = 1;
                 x.OperatorID = 1;
                 x.DateDue = Convert.ToDateTime(DateDue);
                 x.DatePosted = DateTime.Now;
-                x.VendorTypeID = db.VendorTypes.Where(p => p.NameX == VendorType).Select(v => v.VendorTypeID).FirstOrDefault();
+                x.StatusID = (int)ServiceRequestModel.ServiceStatus.OPEN;
+                x.VendorIDList = y;
                 x.Details = Details;
               
-                db.Insert(x, "Job", "AFEWellBook");
-
+                db.Insert(x, "ServiceRequest", "AFEWellBook");
+           
             }
-
-
-        
-
+           
+           
+           
+           
             return Json(x, JsonRequestBehavior.AllowGet);
         }
 
