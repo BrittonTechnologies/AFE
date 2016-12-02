@@ -179,7 +179,7 @@ namespace DataModel
 		[Column,     Nullable] public int?      AcceptedVendorID { get; set; } // integer
 		[Column,     Nullable] public DateTime? DatePosted       { get; set; } // date
 		[Column,     Nullable] public DateTime? DateAccepted     { get; set; } // date
-		[Column,     Nullable] public object    VendorIDList     { get; set; } // ARRAY
+		[Column,     Nullable] public List<int>    VendorIDList     { get; set; } // ARRAY
 		[Column,     Nullable] public DateTime? DateDue          { get; set; } // date
 		[Column,     Nullable] public string    Details          { get; set; } // text
 		[PrimaryKey, Identity] public int       ServiceRequestID { get; set; } // integer
